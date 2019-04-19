@@ -7,12 +7,15 @@ namespace restsharp.Models
     {
         public int Id { get; set; }
 
+        public Site Site { get; set; }
+        public int SiteId { get; set; }
+
         [Required]
         public DateTime CreatedAt { get; set; }
 
-        public DateTime UpdatedAt { get; set; }
+        public Nullable<DateTime> UpdatedAt { get; set; }
         
-        public DateTime DeletedAt { get; set; }
+        public Nullable<DateTime> DeletedAt { get; set; }
 
         [Required]
         [StringLength(255)]

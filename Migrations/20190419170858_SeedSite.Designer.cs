@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using restsharp.Persistence;
 
 namespace restsharp.Migrations
 {
     [DbContext(typeof(RestSharpDbContext))]
-    partial class RestSharpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190419170858_SeedSite")]
+    partial class SeedSite
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,7 +29,7 @@ namespace restsharp.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<DateTime?>("DeletedAt");
+                    b.Property<DateTime>("DeletedAt");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -43,7 +45,7 @@ namespace restsharp.Migrations
                         .IsRequired()
                         .HasMaxLength(255);
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime>("UpdatedAt");
 
                     b.HasKey("Id");
 

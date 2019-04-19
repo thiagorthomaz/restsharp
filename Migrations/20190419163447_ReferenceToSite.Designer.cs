@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using restsharp.Persistence;
 
 namespace restsharp.Migrations
 {
     [DbContext(typeof(RestSharpDbContext))]
-    partial class RestSharpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190419163447_ReferenceToSite")]
+    partial class ReferenceToSite
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,7 +29,7 @@ namespace restsharp.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<DateTime?>("DeletedAt");
+                    b.Property<DateTime>("DeletedAt");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -43,7 +45,7 @@ namespace restsharp.Migrations
                         .IsRequired()
                         .HasMaxLength(255);
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime>("UpdatedAt");
 
                     b.HasKey("Id");
 
@@ -92,11 +94,9 @@ namespace restsharp.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
-                    b.Property<DateTime?>("DeletedAt");
+                    b.Property<DateTime>("DeletedAt");
 
-                    b.Property<int?>("MidiaId");
-
-                    b.Property<DateTime?>("PostAt");
+                    b.Property<int>("MidiaId");
 
                     b.Property<string>("PostContent")
                         .HasMaxLength(2147483647);
@@ -115,7 +115,7 @@ namespace restsharp.Migrations
 
                     b.Property<int>("SiteId");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime>("UpdatedAt");
 
                     b.HasKey("Id");
 
@@ -186,7 +186,8 @@ namespace restsharp.Migrations
                 {
                     b.HasOne("restsharp.Models.Midia", "Midia")
                         .WithMany()
-                        .HasForeignKey("MidiaId");
+                        .HasForeignKey("MidiaId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("restsharp.Models.PostStatus", "PostStatus")
                         .WithMany()
