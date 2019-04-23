@@ -44,5 +44,12 @@ namespace restsharp.Controllers
             return posts;
         }
 
+        [HttpGet("byCategory/{id}")]
+        public async Task<IEnumerable<PostsCategories>> byCategory(int id)
+        {
+            var posts = await context.PostsCategories.Where(c => c.CategoryId == id).Include(p => p.Post).Include(c => c.Category).ToListAsync();
+            return posts;
+        }
+
     }
 }
