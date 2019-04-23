@@ -16,8 +16,16 @@ namespace restsharp.Persistence
 
         public DbSet<Post> Posts { get; set; }
 
+        public DbSet<PostsCategories> PostsCategories { get; set; }
+
         public RestSharpDbContext(DbContextOptions<RestSharpDbContext> options) : base(options){
 
         }   
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PostsCategories>().HasKey(pc => new { pc.PostId, pc.CategoryId });
+        }
+        
     }
 }
