@@ -8,7 +8,7 @@ namespace restsharp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             DateTime CurrentTime = DateTime.Now;
-            migrationBuilder.Sql("insert into Sites (Name, Description, CreatedAt, UpdatedAt) values ('Site-1', 'One simple site to explorer some features.', '" +  CurrentTime + "', '" +  CurrentTime + "')");
+            migrationBuilder.Sql("insert into Sites (Name, Description, CreatedAt, UpdatedAt) values ('Site-1', 'One simple site to explorer some features.', GETDATE(), GETDATE())");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
