@@ -1,4 +1,4 @@
-namespace restsharp.Models
+namespace sharppress.Models
 {
     public class PostsCategories
     {

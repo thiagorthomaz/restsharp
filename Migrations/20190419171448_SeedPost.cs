@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace restsharp.Migrations
+namespace sharppress.Migrations
 {
     public partial class SeedPost : Migration
     {

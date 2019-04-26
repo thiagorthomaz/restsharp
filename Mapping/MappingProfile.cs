@@ -1,8 +1,8 @@
 using AutoMapper;
-using restsharp.Controllers.Resources;
-using restsharp.Models;
+using sharppress.Controllers.Resources;
+using sharppress.Models;
 
-namespace restsharp.Mapping
+namespace sharppress.Mapping
 {
     public class MappingProfile : Profile
     {

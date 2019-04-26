@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace restsharp.Controllers.Resources
+namespace sharppress.Controllers.Resources
 {
     public class PostResource
     {

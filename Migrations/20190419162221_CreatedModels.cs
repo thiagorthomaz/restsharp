@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace restsharp.Migrations
+namespace sharppress.Migrations
 {
     public partial class CreatedModels : Migration
     {

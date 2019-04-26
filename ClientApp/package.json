@@ -1,11 +1,11 @@
 {
-  "name": "restsharp",
+  "name": "sharppress",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:ssr": "ng run restsharp:server:dev",
+    "build:ssr": "ng run sharppress:server:dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

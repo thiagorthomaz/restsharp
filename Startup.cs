@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using restsharp.Persistence;
+using sharppress.Persistence;
 
-namespace restsharp
+namespace sharppress
 {
     public class Startup
     {
@@ -26,7 +26,7 @@ namespace restsharp
 
             services.AddAutoMapper();
 
-            services.AddDbContext<RestSharpDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:Default"]));
+            services.AddDbContext<sharppressDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:Default"]));
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

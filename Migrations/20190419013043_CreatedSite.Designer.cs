@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using restsharp.Persistence;
+using sharppress.Persistence;
 
-namespace restsharp.Migrations
+namespace sharppress.Migrations
 {
-    [DbContext(typeof(RestSharpDbContext))]
+    [DbContext(typeof(sharppressDbContext))]
     [Migration("20190419013043_CreatedSite")]
     partial class CreatedSite
     {
@@ -21,7 +21,7 @@ namespace restsharp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("restsharp.Models.Site", b =>
+            modelBuilder.Entity("sharppress.Models.Site", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

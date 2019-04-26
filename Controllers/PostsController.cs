@@ -5,20 +5,20 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using restsharp.Controllers.Resources;
-using restsharp.Models;
-using restsharp.Persistence;
+using sharppress.Controllers.Resources;
+using sharppress.Models;
+using sharppress.Persistence;
 
-namespace restsharp.Controllers
+namespace sharppress.Controllers
 {
 
     [Route("/api/posts")]
     public class PostsController : Controller
     {
-        private readonly RestSharpDbContext context;
+        private readonly sharppressDbContext context;
         private readonly IMapper mapper;
 
-        public PostsController(RestSharpDbContext context, IMapper mapper)
+        public PostsController(sharppressDbContext context, IMapper mapper)
         {
             this.mapper = mapper;
             this.context = context;

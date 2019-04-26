@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using restsharp.Persistence;
+using sharppress.Persistence;
 
-namespace restsharp.Migrations
+namespace sharppress.Migrations
 {
-    [DbContext(typeof(RestSharpDbContext))]
+    [DbContext(typeof(sharppressDbContext))]
     [Migration("20190419163447_ReferenceToSite")]
     partial class ReferenceToSite
     {
@@ -21,7 +21,7 @@ namespace restsharp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("restsharp.Models.Category", b =>
+            modelBuilder.Entity("sharppress.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,7 +54,7 @@ namespace restsharp.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("restsharp.Models.Midia", b =>
+            modelBuilder.Entity("sharppress.Models.Midia", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,7 +86,7 @@ namespace restsharp.Migrations
                     b.ToTable("Midias");
                 });
 
-            modelBuilder.Entity("restsharp.Models.Post", b =>
+            modelBuilder.Entity("sharppress.Models.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -128,7 +128,7 @@ namespace restsharp.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("restsharp.Models.PostStatus", b =>
+            modelBuilder.Entity("sharppress.Models.PostStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -143,7 +143,7 @@ namespace restsharp.Migrations
                     b.ToTable("PostStatus");
                 });
 
-            modelBuilder.Entity("restsharp.Models.Site", b =>
+            modelBuilder.Entity("sharppress.Models.Site", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -166,35 +166,35 @@ namespace restsharp.Migrations
                     b.ToTable("Sites");
                 });
 
-            modelBuilder.Entity("restsharp.Models.Category", b =>
+            modelBuilder.Entity("sharppress.Models.Category", b =>
                 {
-                    b.HasOne("restsharp.Models.Site", "Site")
+                    b.HasOne("sharppress.Models.Site", "Site")
                         .WithMany()
                         .HasForeignKey("SiteId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("restsharp.Models.Midia", b =>
+            modelBuilder.Entity("sharppress.Models.Midia", b =>
                 {
-                    b.HasOne("restsharp.Models.Site", "Site")
+                    b.HasOne("sharppress.Models.Site", "Site")
                         .WithMany()
                         .HasForeignKey("SiteId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("restsharp.Models.Post", b =>
+            modelBuilder.Entity("sharppress.Models.Post", b =>
                 {
-                    b.HasOne("restsharp.Models.Midia", "Midia")
+                    b.HasOne("sharppress.Models.Midia", "Midia")
                         .WithMany()
                         .HasForeignKey("MidiaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("restsharp.Models.PostStatus", "PostStatus")
+                    b.HasOne("sharppress.Models.PostStatus", "PostStatus")
                         .WithMany()
                         .HasForeignKey("PostStatusId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("restsharp.Models.Site", "Site")
+                    b.HasOne("sharppress.Models.Site", "Site")
                         .WithMany()
                         .HasForeignKey("SiteId")
                         .OnDelete(DeleteBehavior.Cascade);

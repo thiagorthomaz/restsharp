@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using restsharp.Models;
+using sharppress.Models;
 
-namespace restsharp.Persistence
+namespace sharppress.Persistence
 {
-    public class RestSharpDbContext : DbContext
+    public class sharppressDbContext : DbContext
     {
 
         public DbSet<Site> Sites { get; set; }
@@ -18,7 +18,7 @@ namespace restsharp.Persistence
 
         public DbSet<PostsCategories> PostsCategories { get; set; }
 
-        public RestSharpDbContext(DbContextOptions<RestSharpDbContext> options) : base(options){
+        public sharppressDbContext(DbContextOptions<sharppressDbContext> options) : base(options){
 
         }   
 

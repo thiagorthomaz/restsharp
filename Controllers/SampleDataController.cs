@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace restsharp.Controllers
+namespace sharppress.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller

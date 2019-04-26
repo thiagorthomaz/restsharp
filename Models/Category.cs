@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace restsharp.Models
+namespace sharppress.Models
 {
     public class Category
     {
