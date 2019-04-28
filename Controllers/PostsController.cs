@@ -51,7 +51,7 @@ namespace sharppress.Controllers
         public async Task<IActionResult> GetPosts()
         {
 
-            var post = await context.Posts.FirstAsync();
+            var post = await context.Posts.Include(p => p.Categories).FirstAsync();
             var postResource = mapper.Map<Post, PostResource>(post);
 
             return Ok(postResource);
@@ -76,7 +76,10 @@ namespace sharppress.Controllers
         public async Task<IActionResult> UpdatePost(int id, [FromBody]PostResource postResource)
         {
 
-            var post = await context.Posts.SingleOrDefaultAsync(p => p.Id == id);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var post = await context.Posts.Include(p => p.Categories).SingleOrDefaultAsync(p => p.Id == id);
 
             if (post == null)
                 return NotFound();

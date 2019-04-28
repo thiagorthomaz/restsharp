@@ -42,10 +42,10 @@ namespace sharppress.Models
 
         public int? MidiaId { get; set; }
 
-        public ICollection<PostCategory> categories { get; set; }
+        public ICollection<PostCategory> Categories { get; set; }
 
         public Post(){
-            categories = new Collection<PostCategory>();
+            Categories = new Collection<PostCategory>();
         }
 
     }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace sharppress.Controllers.Resources
@@ -16,8 +17,6 @@ namespace sharppress.Controllers.Resources
 
         public Nullable<DateTime> UpdatedAt { get; set; }
 
-        public Nullable<DateTime> DeletedAt { get; set; }
-
         [Required]
         [StringLength(255)]
         public string PostTitle { get; set; }
@@ -34,6 +33,8 @@ namespace sharppress.Controllers.Resources
         public int PostStatusId { get; set; }
 
         public int? MidiaId { get; set; }
+
+        public virtual ICollection<int> Categories { get; set; }
 
     }
 }
