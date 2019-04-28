@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using sharppress.Persistence;
+using sharppress.Controllers.Persistence;
 
 namespace sharppress.Migrations
 {
-    [DbContext(typeof(sharppressDbContext))]
-    [Migration("20190419171314_FixCategoryDate")]
-    partial class FixCategoryDate
+    [DbContext(typeof(SharpPressDBContext))]
+    partial class SharpPressDBContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,6 +128,19 @@ namespace sharppress.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("sharppress.Models.PostCategory", b =>
+                {
+                    b.Property<int>("PostId");
+
+                    b.Property<int>("CategoryId");
+
+                    b.HasKey("PostId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("PostsCategories");
+                });
+
             modelBuilder.Entity("sharppress.Models.PostStatus", b =>
                 {
                     b.Property<int>("Id")
@@ -198,6 +209,19 @@ namespace sharppress.Migrations
                     b.HasOne("sharppress.Models.Site", "Site")
                         .WithMany()
                         .HasForeignKey("SiteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("sharppress.Models.PostCategory", b =>
+                {
+                    b.HasOne("sharppress.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("sharppress.Models.Post", "Post")
+                        .WithMany("categories")
+                        .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

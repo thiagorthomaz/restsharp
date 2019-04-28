@@ -1,6 +1,6 @@
 namespace sharppress.Models
 {
-    public class PostsCategories
+    public class PostCategory
     {
         public int PostId { get; set; }
         public int CategoryId { get; set; }

@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using sharppress.Models;
 
-namespace sharppress.Persistence
+namespace sharppress.Controllers.Persistence
 {
-    public class sharppressDbContext : DbContext
+
+    public class SharpPressDBContext : DbContext
     {
 
         public DbSet<Site> Sites { get; set; }
@@ -16,16 +17,16 @@ namespace sharppress.Persistence
 
         public DbSet<Post> Posts { get; set; }
 
-        public DbSet<PostsCategories> PostsCategories { get; set; }
+        public DbSet<PostCategory> PostsCategories { get; set; }
+        
+        public SharpPressDBContext(DbContextOptions<SharpPressDBContext> options) : base(options){
 
-        public sharppressDbContext(DbContextOptions<sharppressDbContext> options) : base(options){
-
-        }   
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PostsCategories>().HasKey(pc => new { pc.PostId, pc.CategoryId });
+            modelBuilder.Entity<PostCategory>().HasKey(pc => new { pc.PostId, pc.CategoryId });
         }
-        
+
     }
 }

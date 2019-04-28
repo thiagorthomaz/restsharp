@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using sharppress.Persistence;
+using sharppress.Controllers.Persistence;
 
 namespace sharppress.Migrations
 {
-    [DbContext(typeof(sharppressDbContext))]
-    [Migration("20190423192922_PostCategory")]
-    partial class PostCategory
+    [DbContext(typeof(SharpPressDBContext))]
+    [Migration("20190428211441_InitialDatabase")]
+    partial class InitialDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -130,6 +130,19 @@ namespace sharppress.Migrations
                     b.ToTable("Posts");
                 });
 
+            modelBuilder.Entity("sharppress.Models.PostCategory", b =>
+                {
+                    b.Property<int>("PostId");
+
+                    b.Property<int>("CategoryId");
+
+                    b.HasKey("PostId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("PostsCategories");
+                });
+
             modelBuilder.Entity("sharppress.Models.PostStatus", b =>
                 {
                     b.Property<int>("Id")
@@ -143,19 +156,6 @@ namespace sharppress.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PostStatus");
-                });
-
-            modelBuilder.Entity("sharppress.Models.PostsCategories", b =>
-                {
-                    b.Property<int>("PostId");
-
-                    b.Property<int>("CategoryId");
-
-                    b.HasKey("PostId", "CategoryId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("PostsCategories");
                 });
 
             modelBuilder.Entity("sharppress.Models.Site", b =>
@@ -214,7 +214,7 @@ namespace sharppress.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("sharppress.Models.PostsCategories", b =>
+            modelBuilder.Entity("sharppress.Models.PostCategory", b =>
                 {
                     b.HasOne("sharppress.Models.Category", "Category")
                         .WithMany()
@@ -222,7 +222,7 @@ namespace sharppress.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("sharppress.Models.Post", "Post")
-                        .WithMany()
+                        .WithMany("categories")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

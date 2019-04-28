@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using sharppress.Controllers.Persistence;
 using sharppress.Controllers.Resources;
 using sharppress.Models;
-using sharppress.Persistence;
 
 namespace sharppress.Controllers
 {
@@ -15,10 +15,10 @@ namespace sharppress.Controllers
     [Route("/api/posts")]
     public class PostsController : Controller
     {
-        private readonly sharppressDbContext context;
+        private readonly SharpPressDBContext context;
         private readonly IMapper mapper;
 
-        public PostsController(sharppressDbContext context, IMapper mapper)
+        public PostsController(SharpPressDBContext context, IMapper mapper)
         {
             this.mapper = mapper;
             this.context = context;
@@ -44,13 +44,6 @@ namespace sharppress.Controllers
         public async Task<IEnumerable<Post>> bySite(int id)
         {
             var posts = await context.Posts.Where(p => p.SiteId == id).ToListAsync();
-            return posts;
-        }
-
-        [HttpGet("byCategory/{id}")]
-        public async Task<IEnumerable<PostsCategories>> byCategory(int id)
-        {
-            var posts = await context.PostsCategories.Where(c => c.CategoryId == id).Include(p => p.Post).Include(c => c.Category).ToListAsync();
             return posts;
         }
 

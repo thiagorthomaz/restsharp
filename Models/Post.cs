@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace sharppress.Models
@@ -39,6 +41,12 @@ namespace sharppress.Models
         public virtual Midia Midia { get; set; }
 
         public int? MidiaId { get; set; }
+
+        public ICollection<PostCategory> categories { get; set; }
+
+        public Post(){
+            categories = new Collection<PostCategory>();
+        }
 
     }
 }
